@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='viewer' style='width: 1024px; height: 600px;'></div>
+    <script src="libs/WebViewer/html5/external/jquery-3.2.1.min.js"></script>
+    <script src='libs/WebViewer/WebViewer.min.js'></script>
+    <script>
+        var viewerElement = document.getElementById('viewer');
+        var myWebViewer = new PDFTron.WebViewer({
+            path: 'libs/WebViewer/',
+            config: 'index.js',
+            l: 'demo:kamildogan@outlook.com:72f3333d013ce540acb103ef13410a7fbb33b407f93e48ca21',
+            initialDoc: 'node.pdf'
+        }, viewerElement); 
+
+        /* $(document).on('documentLoaded', function() { 
+            const iframeWindow = viewerElement.querySelector('iframe').contentWindow;
+            const docViewer = iframeWindow.readerControl.docViewer
+            const annotManager = docViewer.getAnnotationManager();
+            const clickTron = document.getElementById('clickTron')
+            clickTron.onclick = () => {
+                const annotList = annotManager.getAnnotationsList()
+                const annotArray = []
+                annotList.map(annot => {
+                    if(annot.Quads !== undefined) {
+                        const pageIndex = annot.PageNumber
+                        const x1 = annot.Quads[0].x1
+                        const x2 = annot.Quads[annot.Quads.length - 1].x2
+                        const y1 = annot.Quads[annot.Quads.length - 1].y1
+                        const y4 = annot.Quads[0].y4
+                        const top = { x: x1, y: y4, pageIndex: pageIndex}; 
+                        const bottom = { x: x2, y: y1, pageIndex: pageIndex};
+                        const annotObj = {id: annot.Id, Subject: annot.Subject, text: annot.VP, top: top, bottom: bottom}
+                        annotArray.push(annotObj)
+                    }     
+                })
+                console.log(annotArray)
+            }
+        }) */
+    </script>
+</body>
+</html>
